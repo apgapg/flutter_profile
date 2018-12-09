@@ -52,30 +52,37 @@ class _MyHomePageState extends State<MyHomePage> {
               scrollDirection: Axis.vertical,
               children: <Widget>[
                 IntroPage(),
-                Center(
-                  child: Text("gupta"),
-                ),
+                AboutPage(),
               ],
               controller: controller,
             ),
             Align(
-              alignment: Alignment.bottomCenter,
+              alignment: Alignment.bottomRight,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     FloatingActionButton(
-                      onPressed: null,
-                      backgroundColor: Colors.white.withOpacity(0.3),
+                      onPressed: onUpPress,
+                      backgroundColor: Colors.white.withOpacity(0.7),
                       mini: true,
-                      child: Icon(Icons.keyboard_arrow_up,color: Color(0xff686de0),),
+                      child: Icon(
+                        Icons.keyboard_arrow_up,
+                        color: Color(0xff686de0),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8.0,
                     ),
                     FloatingActionButton(
                       onPressed: onDownPress,
                       mini: true,
-                      backgroundColor: Colors.white.withOpacity(0.6),
-                      child: Icon(Icons.keyboard_arrow_down,color: Color(0xff686de0),),
+                      backgroundColor: Colors.white.withOpacity(0.7),
+                      child: Icon(
+                        Icons.keyboard_arrow_down,
+                        color: Color(0xff686de0),
+                      ),
                     )
                   ],
                 ),
@@ -88,7 +95,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void onDownPress() {
-    controller.animateToPage(2,duration: Duration(milliseconds: 500),curve: ElasticInOutCurve());
+    controller.nextPage(duration: Duration(milliseconds: 800), curve: Curves.fastOutSlowIn);
+  }
+
+  void onUpPress() {
+    controller.previousPage(duration: Duration(milliseconds: 800), curve: Curves.fastOutSlowIn);
   }
 }
 
@@ -102,6 +113,23 @@ class IntroPage extends StatelessWidget {
           "Hi there!\n I am Ayush P Gupta",
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 28.0),
+        ),
+      ),
+    );
+  }
+}
+
+class AboutPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 32.0),
+      color: Color(0xff22a6b3),
+      child: Center(
+        child: Text(
+          "I’m from Lucknow. I’m an Android and Flutter developer at Flick2Know Technologies, Gurugram, India. Entrepreneurship, technology, and the most important DIY are my key interests. Besides this, i'm also an educator of Physics for IITJEE at Unacadmey. ",
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 24.0),
         ),
       ),
     );
