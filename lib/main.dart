@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_profile/widget/navigation_button.dart';
 
 void main() {
   SystemChrome.setEnabledSystemUIOverlays([]);
@@ -37,9 +38,29 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final PageController controller = new PageController();
 
+  bool isUpButtonActive = false;
+
+  bool isDownButtonActive = false;
+
   @override
   void initState() {
     super.initState();
+    isUpButtonActive = false;
+    isDownButtonActive = true;
+    controller.addListener(() {
+      print(controller.page);
+      if (controller.page == 0) {
+        setState(() {
+          isUpButtonActive = false;
+          isDownButtonActive = true;
+        });
+      } else if (controller.page == 1) {
+        setState(() {
+          isUpButtonActive = true;
+          isDownButtonActive = true;
+        });
+      }
+    });
   }
 
   @override
@@ -53,37 +74,30 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 IntroPage(),
                 AboutPage(),
+                JobPage(),
               ],
               controller: controller,
             ),
             Align(
               alignment: Alignment.bottomRight,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    FloatingActionButton(
-                      onPressed: onUpPress,
-                      backgroundColor: Colors.white.withOpacity(0.7),
-                      mini: true,
-                      child: Icon(
-                        Icons.keyboard_arrow_up,
-                        color: Color(0xff686de0),
-                      ),
+                    NavigationButton(
+                      icon: Icons.keyboard_arrow_up,
+                      onTapCallback: onUpPress,
+                      isEnabled: isUpButtonActive,
                     ),
                     SizedBox(
                       height: 8.0,
                     ),
-                    FloatingActionButton(
-                      onPressed: onDownPress,
-                      mini: true,
-                      backgroundColor: Colors.white.withOpacity(0.7),
-                      child: Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Color(0xff686de0),
-                      ),
-                    )
+                    NavigationButton(
+                      icon: Icons.keyboard_arrow_down,
+                      onTapCallback: onDownPress,
+                      isEnabled: isDownButtonActive,
+                    ),
                   ],
                 ),
               ),
@@ -108,12 +122,37 @@ class IntroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Color(0xff686de0),
-      child: Center(
-        child: Text(
-          "Hi there!\n I am Ayush P Gupta",
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 28.0),
-        ),
+      child: Stack(
+        children: <Widget>[
+          Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Material(
+                  elevation: 8.0,
+                  shape: CircleBorder(),
+                  color: Colors.transparent,
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('assets/images/avatar.png'),
+                    radius: 60.0,
+                  ),
+                ),
+                SizedBox(
+                  height: 32.0,
+                ),
+                Text(
+                  "Hi there!\n I am Ayush P Gupta",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 28.0),
+                ),
+                SizedBox(
+                  height: 40.0,
+                ),
+              ],
+            ),
+          ),
+          BottomPageText("Intro"),
+        ],
       ),
     );
   }
@@ -124,12 +163,82 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 32.0),
-      color: Color(0xff22a6b3),
-      child: Center(
+      color: Color(0xffeb4d4b),
+      child: Stack(
+        children: <Widget>[
+          Center(
+            child: Text(
+              "I’m from Lucknow. I’m an Android and Flutter developer at Flick2Know Technologies, Gurugram, India. Entrepreneurship, technology, and the most important DIY are my key interests. Besides this, i'm also an educator of Physics for IITJEE at Unacadmey. ",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 24.0),
+            ),
+          ),
+          BottomPageText("About"),
+        ],
+      ),
+    );
+  }
+}
+
+class JobPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 32.0),
+      color: Color(0xff00a8ff),
+      child: Stack(
+        children: <Widget>[
+          Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Material(
+                  elevation: 4.0,
+                  color: Colors.white,
+                  child: Image.asset(
+                    'assets/images/falogo.png',
+                    height: 70.0,
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Text(
+                  "Currently I work at Flick2Know Technologies, Gurugram, India. FieldAssist is the flagship SaaS platform from Flick2Know Technologies used by more than 200 brands worldwide helping them increase their sales efficiency and productivity with the use of mobility.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 24.0),
+                ),
+                SizedBox(
+                  height: 40.0,
+                ),
+              ],
+            ),
+          ),
+          BottomPageText("My Job"),
+        ],
+      ),
+    );
+  }
+}
+
+class BottomPageText extends StatelessWidget {
+  final String text;
+
+  BottomPageText(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Text(
-          "I’m from Lucknow. I’m an Android and Flutter developer at Flick2Know Technologies, Gurugram, India. Entrepreneurship, technology, and the most important DIY are my key interests. Besides this, i'm also an educator of Physics for IITJEE at Unacadmey. ",
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 24.0),
+          text,
+          style: TextStyle(
+            letterSpacing: 2.0,
+            fontSize: 60.0,
+            color: Colors.black.withOpacity(0.07),
+          ),
         ),
       ),
     );

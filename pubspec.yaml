@@ -45,6 +45,10 @@ flutter:
   - family:  MyIcons
     fonts:
     - asset: assets/fonts/MyIcons.ttf
+
+  assets:
+  - assets/images/avatar.png
+  - assets/images/falogo.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
