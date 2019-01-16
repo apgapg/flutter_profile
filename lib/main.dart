@@ -51,7 +51,6 @@ class _MyHomePageState extends State<MyHomePage> {
     isUpButtonActive = false;
     isDownButtonActive = true;
     controller.addListener(() {
-      print(controller.page);
       if (controller.page == 0) {
         setState(() {
           isUpButtonActive = false;
@@ -73,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Stack(
           children: <Widget>[
             PageView(
+
               scrollDirection: Axis.vertical,
               children: <Widget>[
                 IntroPage(),
