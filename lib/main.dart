@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_profile/page/about_page.dart';
+import 'package:flutter_profile/page/artist_page.dart';
+import 'package:flutter_profile/page/contact_page.dart';
 import 'package:flutter_profile/page/intro_page.dart';
 import 'package:flutter_profile/page/job_page.dart';
 import 'package:flutter_profile/widget/navigation_button.dart';
@@ -72,12 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Stack(
           children: <Widget>[
             PageView(
-
               scrollDirection: Axis.vertical,
               children: <Widget>[
                 IntroPage(),
                 AboutPage(),
                 JobPage(),
+                ArtistPage(),
+                ContactPage(),
               ],
               controller: controller,
             ),
@@ -119,6 +122,3 @@ class _MyHomePageState extends State<MyHomePage> {
     controller.previousPage(duration: Duration(milliseconds: 800), curve: Curves.fastOutSlowIn);
   }
 }
-
-
-
