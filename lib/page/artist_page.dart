@@ -17,7 +17,7 @@ class ArtistPage extends StatelessWidget {
               children: <Widget>[
                 ImagesPageView(),
                 SizedBox(
-                  height: 32.0,
+                  height: 24.0,
                 ),
                 Text(
                   "Tried little bit of sketching...",
@@ -53,6 +53,8 @@ class ImagesPageViewState extends State<ImagesPageView> with TickerProviderState
 
   StreamSubscription<int> periodicSub;
 
+  bool _visible = false;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -73,13 +75,13 @@ class ImagesPageViewState extends State<ImagesPageView> with TickerProviderState
         controller.forward();
       }
     });
-    controller.forward();
     controller1.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
         controller.stop();
       }
     });
-    controller1.forward();
+    startAnimation();
+    
     /*  periodicSub = new Stream.periodic(const Duration(milliseconds: 2000), (v) => v).take(100).listen((count) {
       if (mounted) _pageController.nextPage(duration: Duration(milliseconds: 500), curve: ElasticInCurve());
     });*/
@@ -118,7 +120,7 @@ class ImagesPageViewState extends State<ImagesPageView> with TickerProviderState
               ],
             ),
           ),
-          Transform.translate(
+          _visible ? Transform.translate(
             offset: Offset(linearAnimation.value, linearAnimation.value),
             child: Transform.rotate(
               angle: -3.14 / 6,
@@ -130,10 +132,20 @@ class ImagesPageViewState extends State<ImagesPageView> with TickerProviderState
                 ),
               ),
             ),
-          ),
+          ) : SizedBox(height: 0.0,),
         ],
       ),
     );
+  }
+
+  void startAnimation() async {
+    await Future.delayed(Duration(milliseconds: 500));
+    setState(() {
+      _visible = true;
+    });
+    controller.forward();
+
+    controller1.forward();
   }
 }
 
@@ -147,7 +159,7 @@ class ImageWidget extends StatelessWidget {
     return Container(
       child: Image.asset(
         url,
-        fit: BoxFit.fitWidth,
+        fit: BoxFit.cover,
       ),
     );
   }

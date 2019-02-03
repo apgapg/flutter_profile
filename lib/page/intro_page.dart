@@ -151,8 +151,8 @@ class _AnimatedHelloState extends State<AnimatedHello> with SingleTickerProvider
         controller.reverse();
       } else if (status == AnimationStatus.dismissed) {
         await Future.delayed(Duration(milliseconds: 100));
-
-        controller.forward();
+        if (controller != null)
+          controller.forward();
       }
     });
     controller.forward();

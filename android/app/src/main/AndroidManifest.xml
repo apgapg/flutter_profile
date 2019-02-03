@@ -15,7 +15,8 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="Ayush P Gupta"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_circular">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

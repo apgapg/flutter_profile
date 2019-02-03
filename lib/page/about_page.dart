@@ -13,9 +13,10 @@ class AboutPage extends StatelessWidget {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+              Plane(),
               AnimatedTranslate(),
               SizedBox(
-                height: 32.0,
+                height: 24.0,
               ),
               Text(
                 //   "I’m from Lucknow. I’m an Android and Flutter developer at Flick2Know Technologies, Gurugram, India. Entrepreneurship, technology, and the most important DIY are my key interests. Besides this, i'm also an educator of Physics for IITJEE at Unacadmey. ",
@@ -23,7 +24,7 @@ class AboutPage extends StatelessWidget {
                 style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 28.0),
               ),
               SizedBox(
-                height: 32.0,
+                height: 24.0,
               ),
               AnimatedHeritage(),
             ],
@@ -57,8 +58,10 @@ class _AnimatedHeritageState extends State<AnimatedHeritage> with SingleTickerPr
         setState(() {
           show = !show;
         });
-        controller.reset();
-        controller.forward();
+        if (controller != null) {
+          controller.reset();
+          controller.forward();
+        }
       }
     });
     controller.forward();
@@ -104,14 +107,14 @@ class _AnimatedTranslateState extends State<AnimatedTranslate> with SingleTicker
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: Duration(milliseconds: 800), vsync: this);
+    controller = AnimationController(duration: Duration(milliseconds: 700), vsync: this);
     final Animation curve = CurvedAnimation(parent: controller, curve: Curves.easeInOut);
     animation = Tween(begin: 0.0, end: -30.0).animate(curve);
     controller.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
-        controller.reverse();
+        if (controller != null) controller.reverse();
       } else if (status == AnimationStatus.dismissed) {
-        controller.forward();
+        if (controller != null) controller.forward();
       }
     });
     controller.addListener(() {
@@ -133,7 +136,7 @@ class _AnimatedTranslateState extends State<AnimatedTranslate> with SingleTicker
       children: <Widget>[
         Image.asset(
           'assets/images/lucknow.png',
-          height: 160.0,
+          height: 180.0,
         ),
         Transform.translate(
           offset: Offset(0.0, animation.value - 24.0),
@@ -143,7 +146,6 @@ class _AnimatedTranslateState extends State<AnimatedTranslate> with SingleTicker
               Material(
                 shape: CircleBorder(),
                 color: Colors.white,
-
                 child: Container(
                   padding: EdgeInsets.all(2.0),
                   child: CircleAvatar(
@@ -158,6 +160,68 @@ class _AnimatedTranslateState extends State<AnimatedTranslate> with SingleTicker
               ),
             ],
           ),
+        ),
+      ],
+    );
+  }
+}
+
+class Plane extends StatefulWidget {
+  @override
+  _PlaneState createState() => _PlaneState();
+}
+
+class _PlaneState extends State<Plane> with SingleTickerProviderStateMixin {
+  Animation animation;
+  AnimationController controller;
+
+  bool show = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    controller = AnimationController(duration: Duration(milliseconds: 6000), vsync: this);
+    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.linear);
+    animation = Tween(begin: 0.0, end: -(MediaQuery
+        .of(context)
+        .size
+        .width + 500.0)).animate(curve);
+
+    controller.addListener(() {
+      setState(() {});
+    });
+    controller.addStatusListener((status) async {
+      if (status == AnimationStatus.completed) {
+        await Future.delayed(Duration(milliseconds: 600));
+        if (controller != null) {
+          controller.reset();
+          controller.forward();
+        }
+      } else if (status == AnimationStatus.dismissed) {
+        if (controller != null) controller.forward();
+      }
+    });
+    controller.forward();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.center,
+      children: <Widget>[
+        Transform.translate(
+          offset: Offset(MediaQuery
+              .of(context)
+              .size
+              .width + animation.value + 100.0, -28.0),
+          child: Image.asset('assets/images/plane_text.png'),
         ),
       ],
     );

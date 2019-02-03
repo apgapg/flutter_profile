@@ -17,20 +17,20 @@ class ContactPage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
+                Material(
+                  elevation: 8.0,
+                  shape: CircleBorder(),
+                  color: Colors.transparent,
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('assets/images/avatar.png'),
+                    radius: 44.0,
+                  ),
+                ),
+                SizedBox(
+                  height: 28.0,
+                ),
                 Row(
                   children: <Widget>[
-                    FloatingActionButton(
-                      onPressed: () {},
-                      mini: true,
-                      child: Icon(
-                        Icons.phone,
-                        color: color,
-                      ),
-                      backgroundColor: Colors.white.withOpacity(0.9),
-                    ),
-                    SizedBox(
-                      width: 8.0,
-                    ),
                     Text(
                       "+91-8218135689",
                       style: TextStyle(
@@ -47,18 +47,6 @@ class ContactPage extends StatelessWidget {
                 ),
                 Row(
                   children: <Widget>[
-                    FloatingActionButton(
-                      onPressed: () {},
-                      mini: true,
-                      child: Icon(
-                        Icons.mail,
-                        color: color,
-                      ),
-                      backgroundColor: Colors.white.withOpacity(0.9),
-                    ),
-                    SizedBox(
-                      width: 8.0,
-                    ),
                     Text(
                       "ayushpguptaapg@gmail.com",
                       style: TextStyle(
@@ -75,41 +63,11 @@ class ContactPage extends StatelessWidget {
                 ),
                 Row(
                   children: <Widget>[
-                    FloatingActionButton(
-                      onPressed: () {
-                        _launchURL("https://medium.com/@ayushpguptaapg");
-                      },
-                      mini: true,
-                      child: Icon(
-                        FontAwesomeIcons.mediumM,
-                        color: color,
-                      ),
-                      backgroundColor: Colors.white.withOpacity(0.9),
-                    ),
+                    CircularButton(FontAwesomeIcons.mediumM, "https://medium.com/@ayushpguptaapg"),
                     HorizontalSpacing(),
-                    FloatingActionButton(
-                      onPressed: () {
-                        _launchURL("https://www.instagram.com/ayushpgupta/");
-                      },
-                      mini: true,
-                      child: Icon(
-                        FontAwesomeIcons.instagram,
-                        color: color,
-                      ),
-                      backgroundColor: Colors.white.withOpacity(0.9),
-                    ),
+                    CircularButton(FontAwesomeIcons.instagram, "https://www.instagram.com/ayushpgupta/"),
                     HorizontalSpacing(),
-                    FloatingActionButton(
-                      onPressed: () {
-                        _launchURL("https://github.com/apgapg");
-                      },
-                      mini: true,
-                      child: Icon(
-                        FontAwesomeIcons.github,
-                        color: color,
-                      ),
-                      backgroundColor: Colors.white.withOpacity(0.9),
-                    ),
+                    CircularButton(FontAwesomeIcons.github, "https://github.com/apgapg"),
                   ],
                   mainAxisSize: MainAxisSize.min,
                 ),
@@ -118,29 +76,9 @@ class ContactPage extends StatelessWidget {
                 ),
                 Row(
                   children: <Widget>[
-                    FloatingActionButton(
-                      onPressed: () {
-                        _launchURL("https://www.facebook.com/ayushpgupta");
-                      },
-                      mini: true,
-                      child: Icon(
-                        FontAwesomeIcons.facebookF,
-                        color: color,
-                      ),
-                      backgroundColor: Colors.white.withOpacity(0.9),
-                    ),
+                    CircularButton(FontAwesomeIcons.facebookF, "https://www.facebook.com/ayushpgupta"),
                     HorizontalSpacing(),
-                    FloatingActionButton(
-                      onPressed: () {
-                        _launchURL("https://medium.com/@ayushpguptaapg");
-                      },
-                      mini: true,
-                      child: Icon(
-                        FontAwesomeIcons.googlePlusG,
-                        color: color,
-                      ),
-                      backgroundColor: Colors.white.withOpacity(0.9),
-                    ),
+                    CircularButton(FontAwesomeIcons.googlePlusG, "https://medium.com/@ayushpguptaapg"),
                   ],
                   mainAxisSize: MainAxisSize.min,
                 ),
@@ -276,6 +214,14 @@ class _AnimatedLaptopState extends State<AnimatedLaptop> with SingleTickerProvid
       ],
     );
   }
+
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 }
 
 class HorizontalSpacing extends StatelessWidget {
@@ -284,5 +230,85 @@ class HorizontalSpacing extends StatelessWidget {
     return SizedBox(
       width: 32.0,
     );
+  }
+}
+
+class CircularButton extends StatefulWidget {
+  final IconData iconData;
+
+  final String url;
+
+  CircularButton(this.iconData, this.url);
+
+  @override
+  CircularButtonState createState() {
+    return new CircularButtonState();
+  }
+}
+
+class CircularButtonState extends State<CircularButton> with SingleTickerProviderStateMixin {
+  final Color color = Color(0xffee5253);
+  Animation animation;
+  AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(duration: Duration(milliseconds: 300), vsync: this);
+    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.bounceOut);
+    animation = Tween(begin: 4.0, end: 0.0).animate(curve);
+
+    controller.addStatusListener((status) async {
+      if (status == AnimationStatus.completed) {
+        await Future.delayed(Duration(seconds: 1));
+        if (controller != null) {
+          controller.reset();
+          controller.forward();
+        }
+      } else if (status == AnimationStatus.dismissed) {
+        controller.forward();
+      }
+    });
+
+    controller.addListener(() {
+      setState(() {});
+    });
+    controller.forward();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: animation.value),
+      height: 40.0,
+      child: FloatingActionButton(
+        onPressed: () {
+          _launchURL(widget.url);
+        },
+        mini: true,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: animation.value),
+          child: Icon(
+            widget.iconData,
+            color: color,
+          ),
+        ),
+        backgroundColor: Colors.white.withOpacity(0.9),
+      ),
+    );
+  }
+
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

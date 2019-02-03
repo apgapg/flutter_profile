@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_profile/widget/bottom_page_text.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class JobPage extends StatelessWidget {
   @override
@@ -31,7 +32,25 @@ class JobPage extends StatelessWidget {
                   style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 24.0),
                 ),
                 SizedBox(
-                  height: 40.0,
+                  height: 32.0,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    _launchURL("https://www.fieldassist.in/");
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Text(
+                      "https://www.fieldassist.in/",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.white.withOpacity(0.87),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20.0,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -40,6 +59,14 @@ class JobPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
 
@@ -68,7 +95,6 @@ class _AnimatedLaptopState extends State<AnimatedLaptop> with SingleTickerProvid
         });
         await Future.delayed(Duration(seconds: 1));
         controller.reset();
-
         controller.forward();
       } else if (status == AnimationStatus.forward) {
         setState(() {
@@ -80,6 +106,12 @@ class _AnimatedLaptopState extends State<AnimatedLaptop> with SingleTickerProvid
       setState(() {});
     });
     controller.forward();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose(); // TODO: implement dispose
+    super.dispose();
   }
 
   @override
@@ -97,7 +129,14 @@ class _AnimatedLaptopState extends State<AnimatedLaptop> with SingleTickerProvid
               width: 40.0,
               margin: EdgeInsets.all(2.0),
               color: Colors.white,
-              child: showLogo ? Center(child: Image.asset('assets/images/falogo.png', height: 24.0,),) : Text(""),
+              child: showLogo
+                  ? Center(
+                child: Image.asset(
+                  'assets/images/falogo.png',
+                  height: 24.0,
+                ),
+              )
+                  : Text(""),
             ),
             Image.asset(
               'assets/images/mobile.png',
@@ -106,7 +145,9 @@ class _AnimatedLaptopState extends State<AnimatedLaptop> with SingleTickerProvid
             ),
           ],
         ),
-        SizedBox(width: 4.0,),
+        SizedBox(
+          width: 4.0,
+        ),
         Stack(
           alignment: Alignment.topCenter,
           children: <Widget>[
