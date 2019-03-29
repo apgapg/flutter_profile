@@ -8,12 +8,7 @@ This repo is the source code of my portfolio app published on playstore.
 
 #### App has some unique animations on each page. All involving some different kinds of animations and its code
 
-<img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/intro.gif"  height = "400" >
-<img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/home.gif"  height = "400" >
-<img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/job.gif"  height = "400" >
-<img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/sketch.gif"  height = "400" >
-<img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/educate.gif"  height = "400" >
-<img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/contact.gif"  height = "400" >
+<img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/intro.gif"  height = "400" ><img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/home.gif"  height = "400" ><img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/job.gif"  height = "400" ><img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/sketch.gif"  height = "400" ><img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/educate.gif"  height = "400" ><img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/contact.gif"  height = "400" >
 
 # ⭐ Other Flutter Packages
 - [pie_chart](https://pub.dartlang˚.org/packages/pie_chart)  [![GitHub stars](https://img.shields.io/github/stars/apgapg/pie_chart.svg?style=social)](https://github.com/apgapg/pie_chart)  Flutter Pie Chart with cool animation.
