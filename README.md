@@ -2,7 +2,7 @@
 
 
 This repo is the source code of my portfolio app published on playstore.  
-📱[View App on Playstore](!https://play.google.com/store/apps/details?id=com.coddu.flutterprofile)
+📱[View App on Playstore](https://play.google.com/store/apps/details?id=com.coddu.flutterprofile)
 
 # Learning
 
