@@ -1,4 +1,4 @@
-# My Portfolio: Ayush P Gupta [![Twitter Follow](https://img.shields.io/twitter/url/https/@ayushpgupta.svg?style=social)](https://twitter.com/ayushpgupta) ![GitHub last commit](https://img.shields.io/github/last-commit/apgapg/avatar_glow.svg) [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://play.google.com/store/apps/details?id=com.coddu.flutterprofile)[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/apgapg/avatar_glow)
+# My Portfolio: Ayush P Gupta [![Twitter Follow](https://img.shields.io/twitter/url/https/@ayushpgupta.svg?style=social)](https://twitter.com/ayushpgupta) ![GitHub last commit](https://img.shields.io/github/last-commit/apgapg/flutter_profile.svg) [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://play.google.com/store/apps/details?id=com.coddu.flutterprofile)[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/apgapg/avatar_glow)
 
 
 This repo is the source code of my portfolio app published on playstore.  
@@ -8,15 +8,15 @@ This repo is the source code of my portfolio app published on playstore.
 
 #### App has some unique animations on each page. All involving some different kinds of animations and its code
 
-<img src="https://raw.githubusercontent.com/apgapg/avatar_glow/master/src/intro.gif"  height = "400" >
-<img src="https://raw.githubusercontent.com/apgapg/avatar_glow/master/src/home.gif"  height = "400" >
-<img src="https://raw.githubusercontent.com/apgapg/avatar_glow/master/src/job.gif"  height = "400" >
-<img src="https://raw.githubusercontent.com/apgapg/avatar_glow/master/src/sketch.gif"  height = "400" >
-<img src="https://raw.githubusercontent.com/apgapg/avatar_glow/master/src/educate.gif"  height = "400" >
-<img src="https://raw.githubusercontent.com/apgapg/avatar_glow/master/src/contact.gif"  height = "400" >
+<img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/intro.gif"  height = "400" >
+<img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/home.gif"  height = "400" >
+<img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/job.gif"  height = "400" >
+<img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/sketch.gif"  height = "400" >
+<img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/educate.gif"  height = "400" >
+<img src="https://raw.githubusercontent.com/apgapg/flutter_profile/master/src/contact.gif"  height = "400" >
 
 # ⭐ Other Flutter Packages
-- [pie_chart](https://pub.dartlang.org/packages/pie_chart)  [![GitHub stars](https://img.shields.io/github/stars/apgapg/pie_chart.svg?style=social)](https://github.com/apgapg/pie_chart)  Flutter Pie Chart with cool animation.
+- [pie_chart](https://pub.dartlang˚.org/packages/pie_chart)  [![GitHub stars](https://img.shields.io/github/stars/apgapg/pie_chart.svg?style=social)](https://github.com/apgapg/pie_chart)  Flutter Pie Chart with cool animation.
 - [avatar_glow](https://pub.dartlang.org/packages/avatar_glow)  [![GitHub stars](https://img.shields.io/github/stars/apgapg/avatar_glow.svg?style=social)](https://github.com/apgapg/pie_chart)  Flutter Avatar Glow Widget with glowing animation.
 
 # 👍 Contribution
