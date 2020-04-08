@@ -1,8 +1,8 @@
-# My Portfolio: Ayush P Gupta [![Twitter Follow](https://img.shields.io/twitter/url/https/@ayushpgupta.svg?style=social)](https://twitter.com/ayushpgupta) ![GitHub last commit](https://img.shields.io/github/last-commit/apgapg/flutter_profile.svg) [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://play.google.com/store/apps/details?id=com.coddu.flutterprofile)[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/apgapg/avatar_glow)
+# My Portfolio: Ayush P Gupta [![Twitter Follow](https://img.shields.io/twitter/url/https/@ayushpgupta.svg?style=social)](https://twitter.com/ayushpgupta) ![GitHub last commit](https://img.shields.io/github/last-commit/apgapg/flutter_profile.svg) [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://apgapg.github.io/flutter_profile/)[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://apgapg.github.io/flutter_profile/)
 
 
-This repo is the source code of my portfolio app published on playstore.  
-📱[View App on Playstore](https://play.google.com/store/apps/details?id=com.coddu.flutterprofile)
+This repo is the source code of my portfolio app.  
+📱[View Live Demo](https://apgapg.github.io/flutter_profile/)
 
 # Learning
 
