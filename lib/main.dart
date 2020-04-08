@@ -8,7 +8,6 @@ import 'package:flutter_profile/page/contact_page.dart';
 import 'package:flutter_profile/page/intro_page.dart';
 import 'package:flutter_profile/page/job_page.dart';
 import 'package:flutter_profile/page/unacademy_page.dart';
-import 'package:flutter_profile/utils.dart';
 import 'package:flutter_profile/widget/navigation_button.dart';
 
 void main() {
@@ -18,7 +17,8 @@ void main() {
 
 class MyApp extends StatelessWidget {
   static FirebaseAnalytics analytics = FirebaseAnalytics();
-  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> _setAnalyticsCollectionEnabled() async {
-    await widget.analytics.android?.setAnalyticsCollectionEnabled(!isDebug);
+    //await widget.analytics.android?.(!isDebug);
   }
 
   @override
@@ -162,10 +162,12 @@ class TabsControllerState extends State<TabsController> {
   }
 
   void onDownPress() {
-    widget.controller.nextPage(duration: Duration(milliseconds: 800), curve: Curves.fastOutSlowIn);
+    widget.controller.nextPage(
+        duration: Duration(milliseconds: 800), curve: Curves.fastOutSlowIn);
   }
 
   void onUpPress() {
-    widget.controller.previousPage(duration: Duration(milliseconds: 800), curve: Curves.fastOutSlowIn);
+    widget.controller.previousPage(
+        duration: Duration(milliseconds: 800), curve: Curves.fastOutSlowIn);
   }
 }
