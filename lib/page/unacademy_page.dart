@@ -23,7 +23,7 @@ class UnacademyPage extends StatelessWidget {
                   padding: EdgeInsets.all(8.0),
                   child: Image.asset(
                     'assets/images/unacademy.png',
-                    height: 150,
+                    height: 100,
                   ),
                 ),
               ),

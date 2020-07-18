@@ -128,7 +128,7 @@ class ImagesPageViewState extends State<ImagesPageView> with TickerProviderState
                 offset: Offset(animation.value, 0),
                 child: Image.asset(
                   'assets/images/pen.png',
-                  height: MediaQuery.of(context).size.width / 4,
+                  height: 100,
                 ),
               ),
             ),
