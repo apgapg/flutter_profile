@@ -23,7 +23,7 @@ class UnacademyPage extends StatelessWidget {
                   padding: EdgeInsets.all(8.0),
                   child: Image.asset(
                     'assets/images/unacademy.png',
-                    height: MediaQuery.of(context).size.width / 7.5,
+                    height: 150,
                   ),
                 ),
               ),
@@ -54,7 +54,10 @@ class UnacademyPage extends StatelessWidget {
                 child: Text(
                   "IIT-JEE Physics Educator at Unacademy",
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 24.0),
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.87),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 24.0),
                 ),
               ),
               SizedBox(
@@ -112,15 +115,18 @@ class CustomRow extends StatefulWidget {
   }
 }
 
-class CustomRowState extends State<CustomRow> with SingleTickerProviderStateMixin {
+class CustomRowState extends State<CustomRow>
+    with SingleTickerProviderStateMixin {
   Animation animation;
   AnimationController controller;
 
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: Duration(milliseconds: 800), vsync: this);
-    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.decelerate);
+    controller =
+        AnimationController(duration: Duration(milliseconds: 800), vsync: this);
+    final Animation curve =
+        CurvedAnimation(parent: controller, curve: Curves.decelerate);
     animation = StepTween(begin: 0, end: widget.endValue).animate(curve)
       ..addListener(() {
         setState(() {});
@@ -144,7 +150,10 @@ class CustomRowState extends State<CustomRow> with SingleTickerProviderStateMixi
           Text(
             animation.value.toString() + " " + widget.text,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 20.0),
+            style: TextStyle(
+                color: Colors.white.withOpacity(0.87),
+                fontWeight: FontWeight.w700,
+                fontSize: 20.0),
           ),
         ],
       ),
@@ -191,9 +200,11 @@ class RatingState extends State<Rating> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: Duration(milliseconds: 8000), vsync: this);
+    controller = AnimationController(
+        duration: Duration(milliseconds: 8000), vsync: this);
 
-    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.linear);
+    final Animation curve =
+        CurvedAnimation(parent: controller, curve: Curves.linear);
     animation = Tween(begin: 0, end: 580.0).animate(curve);
     controller.addStatusListener((_) async {
       if (controller.status == AnimationStatus.completed) {
@@ -214,7 +225,7 @@ class RatingState extends State<Rating> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.width / 2.8,
+      height: 150,
       child: ListView.builder(
         controller: _scrollController,
         padding: EdgeInsets.symmetric(horizontal: 4.0),
@@ -223,7 +234,8 @@ class RatingState extends State<Rating> with SingleTickerProviderStateMixin {
             padding: EdgeInsets.symmetric(horizontal: 2.0),
             child: Card(
               elevation: 2.0,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12.0))),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(12.0))),
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(4.0)),
                 child: Image.asset(

@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+    <meta name="description" content="A new Flutter project." />
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Ayush P Gupta">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Ayush P Gupta" />
+    <link rel="apple-touch-icon" href="icons/Icon-192.png" />
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
-  <title>Ayush P Gupta</title>
-  <link rel="manifest" href="manifest.json">
-</head>
-<body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js');
-      });
-    }
-  </script>
-  <script src="main.dart.js" type="application/javascript"></script>
-</body>
+    <title>Ayush P Gupta</title>
+    <link rel="manifest" href="manifest.json" />
+  </head>
+  <body>
+    <div class="center">
+      <img style="height: 150px;" src="img/logo.png" />
+      <div style="margin-top: 8px;"></div>
+      <div class="loader"></div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        projectId: "profile-c7d85",
+        appId: "1:226199288420:web:ef98c98680a4a6bb6dbd71",
+        databaseURL: "https://profile-c7d85.firebaseio.com",
+        storageBucket: "profile-c7d85.appspot.com",
+        locationId: "asia-south1",
+        apiKey: "AIzaSyBWyrXDvgZxATSQm5Gcsveo1Gm3hpc3XVc",
+        authDomain: "profile-c7d85.firebaseapp.com",
+        messagingSenderId: "226199288420",
+        measurementId: "G-3B3EQ1169Q",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+    <script src="main.dart.js" type="application/javascript"></script>
+  </body>
 </html>

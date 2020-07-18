@@ -9,9 +9,6 @@ description: A new Flutter application.
 # Read more about versioning at semver.org.
 version: 1.0.0+1
 
-environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
-
 dependencies:
   flutter:
     sdk: flutter
@@ -20,8 +17,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
   font_awesome_flutter: ^8.8.1
-  url_launcher: ^5.4.2
-  firebase_analytics: ^5.0.11
+  url_launcher: ^5.5.0
+  firebase_analytics: ^5.0.16
 
 dev_dependencies:
   flutter_test:
@@ -50,26 +47,9 @@ flutter:
     - asset: assets/fonts/MyIcons.ttf
 
   assets:
-  - assets/images/avatar.png
-  - assets/images/falogo.png
-  - assets/images/hand.png
-  - assets/images/lucknow.png
-  - assets/images/lucknow_heritage.png
-  - assets/images/laptop.png
-  - assets/images/mobile.png
-
-  - assets/images/artist/i1.jpg
-  - assets/images/artist/i2.jpg
-  - assets/images/artist/i3.jpg
-  - assets/images/artist/i4.jpg
-  - assets/images/artist/i5.jpg
-  - assets/images/pen.png
-  - assets/images/plane_text.png
-  - assets/images/unacademy.png
-  - assets/images/unacademy/1.png
-  - assets/images/unacademy/2.png
-  - assets/images/unacademy/3.png
-  - assets/images/unacademy/4.png
+  - assets/images/
+  - assets/images/artist/
+  - assets/images/unacademy/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

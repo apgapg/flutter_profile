@@ -10,7 +10,10 @@ import 'package:flutter_profile/page/job_page.dart';
 import 'package:flutter_profile/page/unacademy_page.dart';
 import 'package:flutter_profile/widget/navigation_button.dart';
 
+import 'widget/responsive_container.dart';
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
 }
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorObservers: <NavigatorObserver>[observer],
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Ayush P Gupta',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -33,7 +36,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page', analytics: analytics),
+      home: MyHomePage(analytics: analytics),
     );
   }
 }
@@ -41,9 +44,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   final FirebaseAnalytics analytics;
 
-  MyHomePage({Key key, this.title, this.analytics}) : super(key: key);
-
-  final String title;
+  MyHomePage({Key key, this.analytics}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -65,27 +66,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Stack(
-          children: <Widget>[
-            PageView(
-              scrollDirection: Axis.vertical,
-              children: <Widget>[
-                IntroPage(),
-                AboutPage(),
-                JobPage(),
-                ArtistPage(),
-                UnacademyPage(),
-                ContactPage(),
-              ],
-              controller: controller,
-            ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: TabsController(controller),
-            )
-          ],
+    return ResponsiveContainer(
+      child: Scaffold(
+        body: Container(
+          child: Stack(
+            children: <Widget>[
+              PageView(
+                scrollDirection: Axis.vertical,
+                children: <Widget>[
+                  IntroPage(),
+                  AboutPage(),
+                  JobPage(),
+                  ArtistPage(),
+                  UnacademyPage(),
+                  ContactPage(),
+                ],
+                controller: controller,
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: TabsController(controller),
+              )
+            ],
+          ),
         ),
       ),
     );
