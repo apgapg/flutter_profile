@@ -21,7 +21,10 @@ class AboutPage extends StatelessWidget {
               Text(
                 //   "I’m from Lucknow. I’m an Android and Flutter developer at Flick2Know Technologies, Gurugram, India. Entrepreneurship, technology, and the most important DIY are my key interests. Besides this, i'm also an educator of Physics for IITJEE at Unacadmey. ",
                 "I'm from Lucknow", textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 28.0),
+                style: TextStyle(
+                    color: Colors.white.withOpacity(0.87),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 28.0),
               ),
               SizedBox(
                 height: 24.0,
@@ -41,7 +44,8 @@ class AnimatedHeritage extends StatefulWidget {
   _AnimatedHeritageState createState() => _AnimatedHeritageState();
 }
 
-class _AnimatedHeritageState extends State<AnimatedHeritage> with SingleTickerProviderStateMixin {
+class _AnimatedHeritageState extends State<AnimatedHeritage>
+    with SingleTickerProviderStateMixin {
   Animation<double> animation;
   AnimationController controller;
 
@@ -50,8 +54,10 @@ class _AnimatedHeritageState extends State<AnimatedHeritage> with SingleTickerPr
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: Duration(milliseconds: 500), vsync: this);
-    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.easeInOut);
+    controller =
+        AnimationController(duration: Duration(milliseconds: 500), vsync: this);
+    final Animation curve =
+        CurvedAnimation(parent: controller, curve: Curves.easeInOut);
     animation = Tween(begin: 3.14 * 0.20, end: -3.14 * 0.20).animate(curve);
     controller.addStatusListener((_) async {
       if (controller.status == AnimationStatus.completed) {
@@ -98,7 +104,8 @@ class AnimatedTranslate extends StatefulWidget {
   _AnimatedTranslateState createState() => _AnimatedTranslateState();
 }
 
-class _AnimatedTranslateState extends State<AnimatedTranslate> with SingleTickerProviderStateMixin {
+class _AnimatedTranslateState extends State<AnimatedTranslate>
+    with SingleTickerProviderStateMixin {
   Animation animation;
   AnimationController controller;
 
@@ -107,8 +114,10 @@ class _AnimatedTranslateState extends State<AnimatedTranslate> with SingleTicker
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: Duration(milliseconds: 700), vsync: this);
-    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.easeInOut);
+    controller =
+        AnimationController(duration: Duration(milliseconds: 700), vsync: this);
+    final Animation curve =
+        CurvedAnimation(parent: controller, curve: Curves.easeInOut);
     animation = Tween(begin: 0.0, end: -30.0).animate(curve);
     controller.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
@@ -181,12 +190,13 @@ class _PlaneState extends State<Plane> with SingleTickerProviderStateMixin {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    controller = AnimationController(duration: Duration(milliseconds: 6000), vsync: this);
-    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.linear);
-    animation = Tween(begin: 0.0, end: -(MediaQuery
-        .of(context)
-        .size
-        .width + 500.0)).animate(curve);
+    controller = AnimationController(
+        duration: Duration(milliseconds: 6000), vsync: this);
+    final Animation curve =
+        CurvedAnimation(parent: controller, curve: Curves.linear);
+    animation =
+        Tween(begin: 0.0, end: -(MediaQuery.of(context).size.width + 500.0))
+            .animate(curve);
 
     controller.addListener(() {
       setState(() {});
@@ -217,10 +227,9 @@ class _PlaneState extends State<Plane> with SingleTickerProviderStateMixin {
       alignment: Alignment.center,
       children: <Widget>[
         Transform.translate(
-          offset: Offset(MediaQuery
-              .of(context)
-              .size
-              .width + animation.value + 100.0, -28.0),
+          offset: Offset(
+              MediaQuery.of(context).size.width + animation.value + 100.0,
+              -28.0),
           child: Image.asset('assets/images/plane_text.png'),
         ),
       ],

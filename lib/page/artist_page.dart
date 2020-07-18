@@ -22,7 +22,10 @@ class ArtistPage extends StatelessWidget {
                 Text(
                   "Tried little bit of sketching...",
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 24.0),
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.87),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 24.0),
                 ),
                 SizedBox(
                   height: 40.0,
@@ -44,7 +47,8 @@ class ImagesPageView extends StatefulWidget {
   }
 }
 
-class ImagesPageViewState extends State<ImagesPageView> with TickerProviderStateMixin {
+class ImagesPageViewState extends State<ImagesPageView>
+    with TickerProviderStateMixin {
   final _pageController = new PageController();
   Animation<double> animation;
   Animation<double> linearAnimation;
@@ -58,15 +62,20 @@ class ImagesPageViewState extends State<ImagesPageView> with TickerProviderState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    controller = AnimationController(duration: Duration(milliseconds: 70), vsync: this);
-    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.easeInOut);
+    controller =
+        AnimationController(duration: Duration(milliseconds: 70), vsync: this);
+    final Animation curve =
+        CurvedAnimation(parent: controller, curve: Curves.easeInOut);
     animation = Tween(begin: -70.0, end: 70.0).animate(curve)
       ..addListener(() {
         setState(() {});
       });
-    controller1 = AnimationController(duration: Duration(milliseconds: 1600), vsync: this);
+    controller1 = AnimationController(
+        duration: Duration(milliseconds: 1600), vsync: this);
 
-    linearAnimation = Tween(begin: 0.0, end: MediaQuery.of(context).size.height / 1.5).animate(controller1);
+    linearAnimation =
+        Tween(begin: 0.0, end: MediaQuery.of(context).size.height / 1.5)
+            .animate(controller1);
 
     controller.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
@@ -81,7 +90,7 @@ class ImagesPageViewState extends State<ImagesPageView> with TickerProviderState
       }
     });
     startAnimation();
-    
+
     /*  periodicSub = new Stream.periodic(const Duration(milliseconds: 2000), (v) => v).take(100).listen((count) {
       if (mounted) _pageController.nextPage(duration: Duration(milliseconds: 500), curve: ElasticInCurve());
     });*/
@@ -120,19 +129,23 @@ class ImagesPageViewState extends State<ImagesPageView> with TickerProviderState
               ],
             ),
           ),
-          _visible ? Transform.translate(
-            offset: Offset(linearAnimation.value, linearAnimation.value),
-            child: Transform.rotate(
-              angle: -3.14 / 6,
-              child: Transform.translate(
-                offset: Offset(animation.value, 0),
-                child: Image.asset(
-                  'assets/images/pen.png',
-                  height: 100,
+          _visible
+              ? Transform.translate(
+                  offset: Offset(linearAnimation.value, linearAnimation.value),
+                  child: Transform.rotate(
+                    angle: -3.14 / 6,
+                    child: Transform.translate(
+                      offset: Offset(animation.value, 0),
+                      child: Image.asset(
+                        'assets/images/pen.png',
+                        height: 100,
+                      ),
+                    ),
+                  ),
+                )
+              : SizedBox(
+                  height: 0.0,
                 ),
-              ),
-            ),
-          ) : SizedBox(height: 0.0,),
         ],
       ),
     );

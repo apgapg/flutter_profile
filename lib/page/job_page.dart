@@ -29,7 +29,10 @@ class JobPage extends StatelessWidget {
                 Text(
                   "I work at Flick2Know Technologies located in Gurugram, India, as a core team member in NPD Product.",
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white.withOpacity(0.87), fontWeight: FontWeight.w700, fontSize: 24.0),
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.87),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 24.0),
                 ),
                 SizedBox(
                   height: 32.0,
@@ -75,7 +78,8 @@ class AnimatedLaptop extends StatefulWidget {
   _AnimatedLaptopState createState() => _AnimatedLaptopState();
 }
 
-class _AnimatedLaptopState extends State<AnimatedLaptop> with SingleTickerProviderStateMixin {
+class _AnimatedLaptopState extends State<AnimatedLaptop>
+    with SingleTickerProviderStateMixin {
   Animation animation;
   AnimationController controller;
 
@@ -85,8 +89,10 @@ class _AnimatedLaptopState extends State<AnimatedLaptop> with SingleTickerProvid
   void initState() {
     // TODO: implement initState
     super.initState();
-    controller = AnimationController(duration: Duration(milliseconds: 1500), vsync: this);
-    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.linear);
+    controller = AnimationController(
+        duration: Duration(milliseconds: 1500), vsync: this);
+    final Animation curve =
+        CurvedAnimation(parent: controller, curve: Curves.linear);
     animation = StepTween(begin: 0, end: 21).animate(curve);
     controller.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
@@ -131,11 +137,11 @@ class _AnimatedLaptopState extends State<AnimatedLaptop> with SingleTickerProvid
               color: Colors.white,
               child: showLogo
                   ? Center(
-                child: Image.asset(
-                  'assets/images/falogo.png',
-                  height: 24.0,
-                ),
-              )
+                      child: Image.asset(
+                        'assets/images/falogo.png',
+                        height: 24.0,
+                      ),
+                    )
                   : Text(""),
             ),
             Image.asset(

@@ -36,7 +36,9 @@ class IntroPage extends StatelessWidget {
                     fontSize: 28.0,
                   ),
                 ),
-                SizedBox(height: 32.0,),
+                SizedBox(
+                  height: 32.0,
+                ),
                 AnimatedHello(),
               ],
             ),
@@ -57,13 +59,19 @@ class AnimatedCircularGlow extends StatefulWidget {
 
   final Widget child;
 
-  AnimatedCircularGlow({this.endRadius, this.duration, this.repeat, this.repeatPause, @required this.child});
+  AnimatedCircularGlow(
+      {this.endRadius,
+      this.duration,
+      this.repeat,
+      this.repeatPause,
+      @required this.child});
 
   @override
   _AnimatedCircularGlowState createState() => _AnimatedCircularGlowState();
 }
 
-class _AnimatedCircularGlowState extends State<AnimatedCircularGlow> with SingleTickerProviderStateMixin {
+class _AnimatedCircularGlowState extends State<AnimatedCircularGlow>
+    with SingleTickerProviderStateMixin {
   Animation<double> animation;
   Animation<double> animation2;
   Animation<double> alphaAnimation;
@@ -73,11 +81,15 @@ class _AnimatedCircularGlowState extends State<AnimatedCircularGlow> with Single
   void initState() {
     super.initState();
     controller = AnimationController(duration: widget.duration, vsync: this);
-    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.decelerate);
-    animation = Tween(begin: (widget.endRadius * 2) / 6, end: (widget.endRadius * 2) * (3 / 4)).animate(curve)
-      ..addListener(() {
-        setState(() {});
-      });
+    final Animation curve =
+        CurvedAnimation(parent: controller, curve: Curves.decelerate);
+    animation = Tween(
+            begin: (widget.endRadius * 2) / 6,
+            end: (widget.endRadius * 2) * (3 / 4))
+        .animate(curve)
+          ..addListener(() {
+            setState(() {});
+          });
     animation2 = Tween(begin: 0.0, end: (widget.endRadius * 2)).animate(curve)
       ..addListener(() {
         setState(() {});
@@ -112,13 +124,17 @@ class _AnimatedCircularGlowState extends State<AnimatedCircularGlow> with Single
             height: animation2.value,
             width: animation2.value,
             child: SizedBox(),
-            decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white.withOpacity(alphaAnimation.value)),
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white.withOpacity(alphaAnimation.value)),
           ),
           Container(
             height: animation.value,
             width: animation.value,
             child: SizedBox(),
-            decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white.withOpacity(alphaAnimation.value)),
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white.withOpacity(alphaAnimation.value)),
           ),
           widget.child,
         ],
@@ -132,15 +148,18 @@ class AnimatedHello extends StatefulWidget {
   _AnimatedHelloState createState() => _AnimatedHelloState();
 }
 
-class _AnimatedHelloState extends State<AnimatedHello> with SingleTickerProviderStateMixin {
+class _AnimatedHelloState extends State<AnimatedHello>
+    with SingleTickerProviderStateMixin {
   Animation<double> animation;
   AnimationController controller;
 
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: Duration(milliseconds: 1050), vsync: this);
-    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.easeInOut);
+    controller = AnimationController(
+        duration: Duration(milliseconds: 1050), vsync: this);
+    final Animation curve =
+        CurvedAnimation(parent: controller, curve: Curves.easeInOut);
     animation = Tween(begin: 3.14 * 0.20, end: -3.14 * 0.20).animate(curve)
       ..addListener(() {
         setState(() {});
@@ -151,8 +170,7 @@ class _AnimatedHelloState extends State<AnimatedHello> with SingleTickerProvider
         controller.reverse();
       } else if (status == AnimationStatus.dismissed) {
         await Future.delayed(Duration(milliseconds: 100));
-        if (controller != null)
-          controller.forward();
+        if (controller != null) controller.forward();
       }
     });
     controller.forward();

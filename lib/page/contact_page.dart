@@ -63,11 +63,14 @@ class ContactPage extends StatelessWidget {
                 ),
                 Row(
                   children: <Widget>[
-                    CircularButton(FontAwesomeIcons.mediumM, "https://medium.com/@ayushpguptaapg"),
+                    CircularButton(FontAwesomeIcons.mediumM,
+                        "https://medium.com/@ayushpguptaapg"),
                     HorizontalSpacing(),
-                    CircularButton(FontAwesomeIcons.instagram, "https://www.instagram.com/ayushpgupta/"),
+                    CircularButton(FontAwesomeIcons.instagram,
+                        "https://www.instagram.com/ayushpgupta/"),
                     HorizontalSpacing(),
-                    CircularButton(FontAwesomeIcons.github, "https://github.com/apgapg"),
+                    CircularButton(
+                        FontAwesomeIcons.github, "https://github.com/apgapg"),
                   ],
                   mainAxisSize: MainAxisSize.min,
                 ),
@@ -76,9 +79,11 @@ class ContactPage extends StatelessWidget {
                 ),
                 Row(
                   children: <Widget>[
-                    CircularButton(FontAwesomeIcons.facebookF, "https://www.facebook.com/ayushpgupta"),
+                    CircularButton(FontAwesomeIcons.facebookF,
+                        "https://www.facebook.com/ayushpgupta"),
                     HorizontalSpacing(),
-                    CircularButton(FontAwesomeIcons.googlePlusG, "https://medium.com/@ayushpguptaapg"),
+                    CircularButton(FontAwesomeIcons.googlePlusG,
+                        "https://medium.com/@ayushpguptaapg"),
                   ],
                   mainAxisSize: MainAxisSize.min,
                 ),
@@ -122,7 +127,8 @@ class AnimatedLaptop extends StatefulWidget {
   _AnimatedLaptopState createState() => _AnimatedLaptopState();
 }
 
-class _AnimatedLaptopState extends State<AnimatedLaptop> with SingleTickerProviderStateMixin {
+class _AnimatedLaptopState extends State<AnimatedLaptop>
+    with SingleTickerProviderStateMixin {
   Animation animation;
   AnimationController controller;
 
@@ -132,8 +138,10 @@ class _AnimatedLaptopState extends State<AnimatedLaptop> with SingleTickerProvid
   void initState() {
     // TODO: implement initState
     super.initState();
-    controller = AnimationController(duration: Duration(milliseconds: 1500), vsync: this);
-    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.linear);
+    controller = AnimationController(
+        duration: Duration(milliseconds: 1500), vsync: this);
+    final Animation curve =
+        CurvedAnimation(parent: controller, curve: Curves.linear);
     animation = StepTween(begin: 0, end: 21).animate(curve);
     controller.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
@@ -246,7 +254,8 @@ class CircularButton extends StatefulWidget {
   }
 }
 
-class CircularButtonState extends State<CircularButton> with SingleTickerProviderStateMixin {
+class CircularButtonState extends State<CircularButton>
+    with SingleTickerProviderStateMixin {
   final Color color = Color(0xffee5253);
   Animation animation;
   AnimationController controller;
@@ -254,8 +263,10 @@ class CircularButtonState extends State<CircularButton> with SingleTickerProvide
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: Duration(milliseconds: 300), vsync: this);
-    final Animation curve = CurvedAnimation(parent: controller, curve: Curves.bounceOut);
+    controller =
+        AnimationController(duration: Duration(milliseconds: 300), vsync: this);
+    final Animation curve =
+        CurvedAnimation(parent: controller, curve: Curves.bounceOut);
     animation = Tween(begin: 4.0, end: 0.0).animate(curve);
 
     controller.addStatusListener((status) async {

@@ -7,7 +7,10 @@ class NavigationButton extends StatelessWidget {
 
   final bool isEnabled;
 
-  NavigationButton({@required this.icon, @required this.onTapCallback, @required this.isEnabled});
+  NavigationButton(
+      {@required this.icon,
+      @required this.onTapCallback,
+      @required this.isEnabled});
 
   @override
   Widget build(BuildContext context) {
